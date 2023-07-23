@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 import { Select, SelectOption } from "./Select"
 
+
 const options = [
   {label: "first", value: 1},
   {label: "second", value: 2},
@@ -18,19 +19,19 @@ function App() {
   // the typeof option is or if not had a value set yet it's undefined
   const [value1, setValue1] = useState<SelectOption[]>([options[0]])
   const [value2, setValue2] = useState<SelectOption | undefined>(options[0])
+
   return (<>
-    <Select
+     <Select
+      options={options}
+      value={value2}
+      // on change gives back an option and we will set the value to that option it gives
+      onChange={o => setValue2(o)}/>
+<Select
       multiple
       options={options}
       value={value1}
       // on change gives back an option and we will set the value to that option it gives
       onChange={o => setValue1(o)}/>
-    <br />
-    <Select
-      options={options}
-      value={value2}
-      // on change gives back an option and we will set the value to that option it gives
-      onChange={o => setValue2(o)}/>
   </>
   )
 }
